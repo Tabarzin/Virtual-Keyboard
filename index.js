@@ -1,17 +1,17 @@
 let div = document.createElement('textarea');
 document.body.appendChild(div);
 
-let keyboard = document.createElement('div');
+/*let keyboard = document.createElement('div');
 keyboard.className = 'keyboard';
 document.body.append(keyboard);
-
+*/
 
 const Keyboard = {
 
   elements: {
 
-    main: null,
-    container: null,
+    //main: null,
+    keyboard: null,
     keys: []
 
 
@@ -22,10 +22,139 @@ const Keyboard = {
   },
 
 
+  properties: {
+    value: "",
+    capsLock: false
+  },
+
+
+  init() {
+    
+    this.elements.keyboard = document.createElement("div");
+    this.elements.keyboard.classList.add("keyboard");
+    //this.elements.keyboard.appendChild(this._createKeys());
+    this.elements.keys = this.elements.keyboard.querySelectorAll(".key");
+
+   // this.elements.keyboard.appendChild(this.elements.keyboard);
+    document.body.appendChild(this.elements.keyboard);
+
+
+  },
+
+  _createKeys() {
+
+    const fragment = document.createDocumentFragment();
+
+    const layout = [
+     "`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace",
+     "tab", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "del",
+      "caps", "a", "s", "d", "f", "g", "h", "j", "k", "l", "enter",
+      "shift", "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", "top", "right-shift",
+      "ctrl", "alt", "space", "alt", "left", "down", "right", "ctrl"
+  ];
+
+    layout.forEach(key => {
+
+      const keyButton = document.createElement('button');
+      const lineBreak = ["backspace", "del", "enter", "right-shift"].indexOf(key) !== -1;
+
+      keyButton.setAttribute("type", "button");
+      keyButton.classList.add("key");
+
+      switch(key) {
+
+        case "backspace":
+          keyButton.classList.add("key-big");
+          keyButton.innerHTML = "Backspace";
+
+          keyButton.addEventListener("click", () => {
+
+            this.properties.value = this.properties.value.substring(0, this.properties.value.length -1);
+
+          });
+          break;
+
+
+
+        case "tab":
+          keyButton.classList.add("key-big");
+          keyButton.innerHTML = "Tab";
+    
+          keyButton.addEventListener("click", () => {
+    
+            this.properties.value += "  "; 
+              });
+    
+           break;  
+
+
+        case "caps":
+          keyButton.classList.add("key-big");
+          keyButton.innerHTML = "Caps Lock";
   
+          keyButton.addEventListener("click", () => {
+  
+            this._toggleCapsLock(); 
+            });
+  
+            break;
+
+        case "shift":
+          keyButton.classList.add("key-big");
+          keyButton.innerHTML = "Shift";
+    
+          keyButton.addEventListener("click", () => {
+    
+          this._toggleShift(); 
+          });
+          
+          break;
+
+        case "enter":
+          keyButton.classList.add("key-big");
+          keyButton.innerHTML = "Enter";
+          break;
+
+            
+        case "space":
+          keyButton.classList.add("key-space");
+          keyButton.innerHTML = "";
+          break;
+
+              
+        default:
+                keyButton.classList.add("key-big");
+                keyButton.innerHTML = "Backspace";
+                break;
+      
+
+      }
+
+
+    });
+
+
+
+  },
+
+  _triggerEvent(handlerName) {
+
+  },
+
+  _toggleCapsLock() {
+
+  }
+
 
 
 
 
 
 };
+
+
+window.addEventListener("DOMContentLoaded", function() {
+  
+  Keyboard.init();
+
+});
