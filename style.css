@@ -14,7 +14,7 @@ textarea {
 
 .keyboard {
   width: 700px;
-  height: 300px;
+  height: 236px;
   margin: 0 auto;
   background: #57bc90;
   border: 2px solid #007849;
@@ -35,6 +35,7 @@ textarea {
   font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
+  vertical-align: middle;
 }
 
 .key:active {
@@ -46,9 +47,18 @@ textarea {
 }
 
 .key-big {
-  width: 60px;
+  width: 90px;
+}
+
+.key-big-caps {
+  width: 110px;
+  font-size: 1rem;
+}
+.key-big-backspace {
+  width: 110px;
+  font-size: 1rem;
 }
 
 .key-space {
-  width: 280px;
+  width: 350px;
 }
