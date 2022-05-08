@@ -1,5 +1,6 @@
 let div = document.createElement('textarea');
 div.classList.add("text-input");
+div.setAttribute("autofocus", "autofocus");
 document.body.appendChild(div);
 
 /*let keyboard = document.createElement('div');
@@ -149,6 +150,14 @@ const Keyboard = {
         case "space":
           keyButton.classList.add("key-space");
           keyButton.innerHTML = " ";
+
+          keyButton.addEventListener("click", () => {
+    
+            this.properties.value += " "; 
+            this._triggerEvent("oninput");
+              });
+    
+
           this._triggerEvent("oninput");
           break;
 
@@ -199,6 +208,9 @@ const Keyboard = {
   _toggleCapsLock() {
 
     this.properties.capsLock = !this.properties.capsLock;
+
+    
+    document.querySelector(".key-big-caps").classList.toggle("key-activated");
     
     for(const key of this.elements.keys) {
 

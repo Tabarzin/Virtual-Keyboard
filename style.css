@@ -46,6 +46,10 @@ textarea {
   background: #31dab2; 
 }
 
+.key-activated {
+  background: #31dab2; 
+}
+
 .key-big {
   width: 90px;
 }
