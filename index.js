@@ -14,24 +14,14 @@ let div = document.createElement('textarea');
 div.classList.add("text-input");
 div.setAttribute("autofocus", "autofocus");
 div.setAttribute("readonly", "readonly");
+div.setAttribute("id", "area");
 document.body.appendChild(div);
 
-/*let key = document.createElement('button');
-key.setAttribute("type", "button");
-key.classList.add("key");
-key.innerHTML = keys[1];
-document.body.appendChild(key);*/
 
 let keyboard = document.createElement("div");
 keyboard.classList.add("keyboard");
 document.body.appendChild(keyboard);
   
-document.addEventListener('keydown', (e) => {
-  let letterPressed = e.key;
-  console.log(letterPressed)
-  let x = document.getElementsByClassName('text-input')
-  x.value = letterPressed;
-})
 
 
 for (let i = 0; i < keyCodes.length; i++) {
@@ -141,7 +131,7 @@ function generateLayout () {
  }
 }
 
-
+generateLayout ();
 
 
 document.addEventListener('keydown', function(event) {
