@@ -13,7 +13,7 @@ textarea {
 }
 
 .keyboard {
-  width: 700px;
+  width: 720px;
   height: 236px;
   margin: 0 auto;
   background: #57bc90;
@@ -64,5 +64,5 @@ textarea {
 }
 
 .key-space {
-  width: 350px;
+  width: 367px;
 }
