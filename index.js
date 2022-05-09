@@ -20,27 +20,9 @@ document.body.appendChild(div);
 
 let keyboard = document.createElement("div");
 keyboard.classList.add("keyboard");
-document.body.appendChild(keyboard);
+document.body.appendChild(keyboard)
+;
 
-let description = document.createElement('span');
-description.textContent = "Created in Manjaro Linux. Language switch: Ctrl + Alt.";
-description.classList.add("descr");
-document.body.appendChild(description);
-
-
-  
-function handleTextArea (keyEvent) {
-  document.addEventListener('keydown', (e) => {
-  let buttonPressed = e.key; 
-  let text = document.getElementById('area');
-  text.value += buttonPressed;
-});
- 
-
-
-}
- 
-handleTextArea ()
 
 for (let i = 0; i < keyCodes.length; i++) {
    const keyButton = document.createElement('button');
@@ -49,77 +31,69 @@ for (let i = 0; i < keyCodes.length; i++) {
    keyboard.appendChild(keyButton);
   
   keyButton.id = keyCodes[i];
-  
-        switch(keyCodes[i]) {
-        case "Backspace":
-        keyButton.classList.add("key-big-backspace");
-            
-          break;
-        
-          case "Tab":
-          keyButton.classList.add("key-big");
-          
-          break;  
-
-        case "CapsLock":
-          keyButton.classList.add("key-big-caps");
-          
-            break;
-
-        case "ShiftLeft":
-        case "ShiftRight":
-            
-         keyButton.classList.add("key-big");
-         
-    
-        break;
-
-          
-
-        case "Enter":
-          keyButton.classList.add("key-big");
-         
-          break;
-
-       case "Space":
-          keyButton.classList.add("key-space");
-         
-
-          break;
-
-     default:
-         
-       
-    
-  };
-  
-    
-}
-  
-
-function generateLayout () {
-    
-  let arr = layoutEn;
-  if (rus) {
-    arr = layoutRu;
+  switch(keyCodes[i]) {
+    case "Backspace":
+      keyButton.classList.add("key-big-backspace");
+      break;
+    case "Tab":
+      keyButton.classList.add("key-big");
+      break;
+    case "CapsLock":
+      keyButton.classList.add("key-big-caps");
+      break;
+    case "ShiftLeft":
+    case "ShiftRight":
+      keyButton.classList.add("key-big");
+      break;
+    case "Enter":
+      keyButton.classList.add("key-big");
+      break;
+    case "Space":
+      keyButton.classList.add("key-space");         
+      break;
   }
+  
+  keyButton.addEventListener("click", (event) => {
+    console.log(event.target)
+    let button = event.target;
+    let text = document.getElementById('area');
+    text.value += button.innerHTML;
+  });
     
- for(let i = 0; i < keyCodes.length; i++)    {
-    
-  let buttonID = document.getElementById(keyCodes[i]);
-    buttonID.textContent = arr[i];
-           
- }
 }
+  
 
-generateLayout ();
+  function generateLayout () {
+    
+    let arr = layoutEn;
+    if (rus) {
+      arr = layoutRu;
+    }
+      
+   for(let i = 0; i < keyCodes.length; i++)    {
+      
+    let buttonID = document.getElementById(keyCodes[i]);
+      buttonID.textContent = arr[i];
+             
+   }
+  }
 
+generateLayout();
 
 document.addEventListener('keydown', function(event) {
     if (event.ctrlKey && event.altKey) {
-     
       rus = !rus;
-     generateLayout();
-             
-   }
+      generateLayout();
+    } else {
+      let button = document.getElementById(event.code);
+      console.log("button: ", button)
+      let evt = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+      });
+      button.dispatchEvent(evt);
+    }
  });
+
+
