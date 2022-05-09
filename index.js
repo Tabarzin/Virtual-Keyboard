@@ -21,8 +21,26 @@ document.body.appendChild(div);
 let keyboard = document.createElement("div");
 keyboard.classList.add("keyboard");
 document.body.appendChild(keyboard);
-  
 
+let description = document.createElement('span');
+description.textContent = "Created in Manjaro Linux. Language switch: Ctrl + Alt.";
+description.classList.add("descr");
+document.body.appendChild(description);
+
+
+  
+function handleTextArea (keyEvent) {
+  document.addEventListener('keydown', (e) => {
+  let buttonPressed = e.key; 
+  let text = document.getElementById('area');
+  text.value += buttonPressed;
+});
+ 
+
+
+}
+ 
+handleTextArea ()
 
 for (let i = 0; i < keyCodes.length; i++) {
    const keyButton = document.createElement('button');
@@ -41,24 +59,11 @@ for (let i = 0; i < keyCodes.length; i++) {
           case "Tab":
           keyButton.classList.add("key-big");
           
-    
-        /*  keyButton.addEventListener("click", () => {
-    
-            this.properties.value += "  "; 
-            this._triggerEvent("oninput");
-              });
-    */
-           break;  
+          break;  
 
         case "CapsLock":
           keyButton.classList.add("key-big-caps");
           
-  
-        /*  keyButton.addEventListener("click", () => {
-  
-            this._toggleCapsLock(); 
-            });
-  */
             break;
 
         case "ShiftLeft":
@@ -67,48 +72,24 @@ for (let i = 0; i < keyCodes.length; i++) {
          keyButton.classList.add("key-big");
          
     
-        /*  keyButton.addEventListener("click", () => {
-    
-          this._toggleShift(); 
-          });
-      */    
-          break;
+        break;
 
           
 
         case "Enter":
           keyButton.classList.add("key-big");
          
-
-        /*  keyButton.addEventListener("click", () => {
-    
-            this.properties.value += "\n"; 
-            this._triggerEvent("oninput");
-            });
-*/
           break;
 
        case "Space":
           keyButton.classList.add("key-space");
          
 
-       /*   keyButton.addEventListener("click", () => {
-    
-            this.properties.value += " "; 
-            this._triggerEvent("oninput");
-              });
- 
-          this._triggerEvent("oninput");*/
           break;
 
-        /*  default:
-          keyButton.textContent = key;*/
-        /*  keyButton.addEventListener("click", () => {
-    
-            this.properties.value += this.properties.capsLock ? key.toUpperCase() : key.toLowerCase();
-            this._triggerEvent("oninput");
-                });*/
+     default:
          
+       
     
   };
   
