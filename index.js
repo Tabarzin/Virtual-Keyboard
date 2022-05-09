@@ -126,28 +126,22 @@ for (let i = 0; i < keyCodes.length; i++) {
 }
   
 
-  function generateLayout (lang) {
-      
-   for(let i = 0; i < keyCodes.length; i++)    {
-      
-    let buttonID = document.getElementById(keyCodes[i]);
-      
-       if (lang === "en") {
-          buttonID.textContent = layoutEn[i];
-         
-     }   
-   
-   else if (lang === "ru") {
-          buttonID.textContent = layoutRu[i];
-     
-   }
-  
-}
+function generateLayout () {
+    
+  let arr = layoutEn;
+  if (rus) {
+    arr = layoutRu;
   }
-
-if(!rus) {
-  generateLayout("en");
+    
+ for(let i = 0; i < keyCodes.length; i++)    {
+    
+  let buttonID = document.getElementById(keyCodes[i]);
+    buttonID.textContent = arr[i];
+           
+ }
 }
+
+
 
 
 document.addEventListener('keydown', function(event) {
