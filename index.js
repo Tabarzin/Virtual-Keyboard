@@ -87,6 +87,13 @@ function createKeys() {
         text.value += "\n";
         break;
           
+        case "ControlLeft":
+          case "ControlRight":
+          case "AltLeft":
+          case "AltRight":
+               text.value = "";
+               break;
+               
       default: 
       text = document.getElementById('area');
       text.value += button.innerHTML;
