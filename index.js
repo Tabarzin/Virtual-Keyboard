@@ -1,12 +1,12 @@
 let rus = false;
 let capsLock = false;
 
-let keys = ["`","1","2","3","4","5","6","7","8","9","0","-","=", "backSlash", "Backspace", "Tab", "q","w","e","r","t","y","u","i","o","p","[", "]", "Caps", "a","s","d","f","g","h","j","k","l",";","'", "Enter", "lShift", "z","x","c","v","b","n","m",",",".","/", "rShift", "lCtrl", "lAlt", "space", "rAlt", "rCtrl", "left", "top", "down", "right" ];
+let keys = ["`","1","2","3","4","5","6","7","8","9","0","-","=", "backSlash", "Backspace", "Tab", "q","w","e","r","t","y","u","i","o","p","[", "]", "Caps", "a","s","d","f","g","h","j","k","l",";","'", "Enter", "lShift", "z","x","c","v","b","n","m",",",".","/", "rShift", "lCtrl", "lAlt", "Space", "rAlt", "rCtrl", "left", "top", "down", "right" ];
                     
 let keyCodes = ["Backquote","Digit1","Digit2","Digit3","Digit4","Digit5","Digit6","Digit7","Digit8","Digit9","Digit0", "Minus","Equal","Backslash", "Backspace", "Tab", "KeyQ","KeyW","KeyE","KeyR","KeyT","KeyY","KeyU","KeyI","KeyO","KeyP","BracketLeft",
 "BracketRight", "CapsLock", "KeyA","KeyS","KeyD","KeyF","KeyG","KeyH","KeyJ","KeyK","KeyL","Semicolon","Quote","Enter", "ShiftLeft", "KeyZ","KeyX","KeyC","KeyV","KeyB","KeyN","KeyM","Comma","Period","Slash", "ShiftRight", "ControlLeft", "AltLeft", "Space", "AltRight", "ControlRight", "ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight" ];
 
-const layoutRu = ["ё","1","2","3","4","5","6","7","8","9","0","-","=", "\\", "Backspace", "Tab", "й","ц","у","к","е","н","г","ш","щ","з","х", "ъ", "Caps Lock", "ф","ы","в","а","п","р","о","л","д","ж","э", "Enter", "lShift", "я","ч","с","м","и","т","ь","б","ю",".", "Shift", "Ctrl", "Alt", "space", "Alt", "Ctrl", "◄", "▲", "▼", "►" ];
+const layoutRu = ["ё","1","2","3","4","5","6","7","8","9","0","-","=", "\\", "Backspace", "Tab", "й","ц","у","к","е","н","г","ш","щ","з","х", "ъ", "Caps Lock", "ф","ы","в","а","п","р","о","л","д","ж","э", "Enter", "Shift", "я","ч","с","м","и","т","ь","б","ю",".", "Shift", "Ctrl", "Alt", "Space", "Alt", "Ctrl", "◄", "▲", "▼", "►" ];
 
 const layoutEn = ["`","1","2","3","4","5","6","7","8","9","0","-","=", "\\", "Backspace", "Tab", "q","w","e","r","t","y","u","i","o","p","[", "]", "Caps", "a","s","d","f","g","h","j","k","l",";","'", "Enter", "Shift", "z","x","c","v","b","n","m",",",".","/", "Shift", "Ctrl", "Alt", "Space", "Alt", "Ctrl",  "◄", "▲", "▼", "►"  ];
 
@@ -72,7 +72,7 @@ function createKeys() {
          
                 
      for(let key of document.querySelectorAll(".key")) {
-      if ((key.textContent !== "backspace") && (key.textContent !== "ctrl") && (key.textContent !== "alt") && (key.textContent !== "shift") && (key.textContent !== "enter") && (key.textContent !== "tab")) {
+      if ((key.id !== "Backspace") && (key.id !== "ControlLeft") && (key.id !== "ControlRight") && (key.id !== "AltLeft") && (key.id !== "AltRight") && (key.id !== "ShiftLeft") && (key.id !== "ShiftRight") && (key.id !== "Enter") && (key.id !== "Tab") && (key.id !== "Space")) {
            key.textContent = capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
         }
        
