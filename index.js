@@ -78,6 +78,11 @@ function createKeys() {
        
       }
       break;
+
+      case "Space":
+        text.value += " ";
+        break;
+        
           
       default: 
       text = document.getElementById('area');
