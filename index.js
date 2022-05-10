@@ -83,6 +83,9 @@ function createKeys() {
         text.value += " ";
         break;
         
+        case "Enter":
+        text.value += "\n";
+        break;
           
       default: 
       text = document.getElementById('area');
