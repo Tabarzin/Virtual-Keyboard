@@ -1,4 +1,5 @@
 let rus = false;
+let capsLock = false;
 
 let keys = ["`","1","2","3","4","5","6","7","8","9","0","-","=", "backSlash", "Backspace", "Tab", "q","w","e","r","t","y","u","i","o","p","[", "]", "Caps", "a","s","d","f","g","h","j","k","l",";","'", "Enter", "lShift", "z","x","c","v","b","n","m",",",".","/", "rShift", "lCtrl", "lAlt", "space", "rAlt", "rCtrl", "left", "top", "down", "right" ];
                     
@@ -23,6 +24,9 @@ function createKeys() {
     switch(keyCodes[i]) {
       case "Backspace":
         keyButton.classList.add("key-big-backspace");
+     
+        
+        
         break;
       case "Tab":
         keyButton.classList.add("key-big");
@@ -45,12 +49,46 @@ function createKeys() {
     keyButton.addEventListener("click", (event) => {
       console.log(event.target)
       let button = event.target;
+      button.classList.add("key-activated");
+      
+      setTimeout(function() {
+        button.classList.remove("key-activated");
+      }, 1000);
+    
       let text = document.getElementById('area');
+      
+      switch(button.id) {
+        case "Backspace": 
+        text.value = text.value.substring(0, text.value.length - 1);
+        break;
+          
+        case "Tab":
+          text.value = "  ";
+          break;
+          
+        case "CapsLock":
+          capsLock = !capsLock;
+          document.getElementById("CapsLock").classList.toggle("caps-active");
+         
+                
+     for(let key of document.querySelectorAll(".key")) {
+      if ((key.textContent !== "backspace") && (key.textContent !== "ctrl") && (key.textContent !== "alt") && (key.textContent !== "shift") && (key.textContent !== "enter") && (key.textContent !== "tab")) {
+           key.textContent = capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+        }
+       
+      }
+      break;
+          
+      default: 
+      text = document.getElementById('area');
       text.value += button.innerHTML;
+          break;
+          
+          }
+           
     });
   }
   }
-    
   // Generate En/Ru layouts
    function generateLayout () {
       
