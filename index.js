@@ -1,5 +1,19 @@
+// ---------- Main ---------
 let rus = false;
 let capsLock = false;
+const div = document.createElement('textarea');
+div.classList.add('text-input');
+div.setAttribute('autofocus', 'autofocus');
+div.setAttribute('readonly', 'readonly');
+div.setAttribute('id', 'area');
+document.body.appendChild(div);
+const keyboard = document.createElement('div');
+keyboard.classList.add('keyboard');
+document.body.appendChild(keyboard);
+const textRuEn = document.createElement('span');
+textRuEn.classList.add('descr');
+textRuEn.innerHTML = 'Made in Linux. Switch layout: Ctrl + Alt';
+document.body.appendChild(textRuEn);
 
 const keyCodes = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backslash', 'Backspace', 'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft',
   'BracketRight', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ShiftRight', 'ControlLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight'];
@@ -66,9 +80,7 @@ function createKeys() {
           document.getElementById('CapsLock').classList.toggle('caps-active');
 
           for (const key of document.querySelectorAll('.key')) {
-            if ((key.id !== 'Backspace') && (key.id !== 'ControlLeft') && (key.id !== 'ControlRight')
-            && (key.id !== 'AltLeft') && (key.id !== 'AltRight') && (key.id !== 'ShiftLeft')
-            && (key.id !== 'ShiftRight') && (key.id !== 'Enter') && (key.id !== 'Tab') && (key.id !== 'Space')) {
+            if ((key.id !== 'Backspace') && (key.id !== 'ControlLeft') && (key.id !== 'ControlRight') && (key.id !== 'AltLeft') && (key.id !== 'AltRight') && (key.id !== 'ShiftLeft') && (key.id !== 'ShiftRight') && (key.id !== 'Enter') && (key.id !== 'Tab') && (key.id !== 'Space')) {
               key.textContent = capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
             }
           }
@@ -88,7 +100,7 @@ function createKeys() {
         case 'AltRight':
         case 'ShiftLeft':
         case 'ShiftRight':
-          text.value = '';
+
           break;
 
         default:
@@ -106,7 +118,7 @@ function generateLayout() {
     arr = layoutRu;
   }
 
-  for (let i = 0; i < keyCodes.length; i = +1) {
+  for (let i = 0; i < keyCodes.length; i += 1) {
     const buttonID = document.getElementById(keyCodes[i]);
     buttonID.textContent = arr[i];
   }
@@ -128,15 +140,5 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-// ---------- Main ---------
-const div = document.createElement('textarea');
-div.classList.add('text-input');
-div.setAttribute('autofocus', 'autofocus');
-div.setAttribute('readonly', 'readonly');
-div.setAttribute('id', 'area');
-document.body.appendChild(div);
-let keyboard = document.createElement('div');
-keyboard.classList.add('keyboard');
-document.body.appendChild(keyboard);
 createKeys();
 generateLayout();
