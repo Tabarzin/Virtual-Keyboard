@@ -43,11 +43,11 @@ textarea {
 }
 
 .key:hover {
-  background: #31dab2; 
+  background: #31dab2;
 }
 
 .key-activated {
-  background: #31dab2; 
+  background: #31dab2;
 }
 
 .key-big {
@@ -58,6 +58,7 @@ textarea {
   width: 110px;
   font-size: 1rem;
 }
+
 .key-big-backspace {
   width: 110px;
   font-size: 1rem;

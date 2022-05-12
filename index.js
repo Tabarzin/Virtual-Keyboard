@@ -63,7 +63,7 @@ function createKeys() {
         break;
           
         case "Tab":
-          text.value = "  ";
+          text.value += "\t";
           break;
           
         case "CapsLock":
@@ -91,8 +91,10 @@ function createKeys() {
           case "ControlRight":
           case "AltLeft":
           case "AltRight":
-               text.value = "";
-               break;
+          case "ShiftLeft":
+          case "ShiftRight":
+              text.value = "";
+              break;
                
       default: 
       text = document.getElementById('area');
