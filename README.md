@@ -1,5 +1,7 @@
 # Virtual-Keyboard
 
+Деплой: https://virtual-keyb.netlify.app/
+
 ### Осталось доделать:
 
 - перевод в верхний регистр (shift)
